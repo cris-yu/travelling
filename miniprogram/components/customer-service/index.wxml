@@ -1,0 +1,19 @@
+<!-- 客服悬浮按钮组件 -->
+<view class="customer-service">
+  <view class="service-options" wx:if="{{showOptions}}">
+    <button class="service-btn emergency-btn" bind:tap="handleEmergencyCall">
+      <text class="btn-icon">🚨</text>
+      <text class="btn-text">紧急求助</text>
+      <text class="btn-phone">400-8888-8888</text>
+    </button>
+    <button class="service-btn normal-btn" bind:tap="handleNormalCall">
+      <text class="btn-icon">📞</text>
+      <text class="btn-text">联系客服</text>
+      <text class="btn-phone">400-6666-6666</text>
+    </button>
+  </view>
+  
+  <button class="service-float-btn" bind:tap="toggleOptions">
+    {{showOptions ? '✕' : '客服'}}
+  </button>
+</view>

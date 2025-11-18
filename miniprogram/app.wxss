@@ -1,0 +1,208 @@
+/* 全局样式 - 针对中老年用户优化 */
+page {
+  background-color: #f5f5f5;
+  font-size: 32rpx;
+  line-height: 1.6;
+  color: #333;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
+
+/* 容器 */
+.container {
+  min-height: 100vh;
+  padding-bottom: 20rpx;
+}
+
+/* 卡片样式 */
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  margin: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 标题 */
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 32rpx;
+  color: #666;
+  margin-top: 12rpx;
+}
+
+/* 按钮 */
+.btn {
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  border-radius: 48rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1677ff 0%, #0958d9 100%);
+  color: #fff;
+}
+
+.btn-outline {
+  background: #fff;
+  color: #1677ff;
+  border: 2rpx solid #1677ff;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff4d4f 0%, #cf1322 100%);
+  color: #fff;
+}
+
+/* 价格 */
+.price {
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.price-large {
+  font-size: 56rpx;
+}
+
+.price-medium {
+  font-size: 48rpx;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 8rpx 24rpx;
+  border-radius: 32rpx;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.tag-primary {
+  background: #e6f4ff;
+  color: #1677ff;
+}
+
+.tag-success {
+  background: #f6ffed;
+  color: #52c41a;
+}
+
+.tag-warning {
+  background: #fff7e6;
+  color: #faad14;
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background: #f0f0f0;
+  margin: 32rpx 0;
+}
+
+/* Flex布局 */
+.flex {
+  display: flex;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 文字大小 */
+.text-xs {
+  font-size: 24rpx;
+}
+
+.text-sm {
+  font-size: 28rpx;
+}
+
+.text-base {
+  font-size: 32rpx;
+}
+
+.text-lg {
+  font-size: 36rpx;
+}
+
+.text-xl {
+  font-size: 40rpx;
+}
+
+.text-2xl {
+  font-size: 48rpx;
+}
+
+.text-3xl {
+  font-size: 56rpx;
+}
+
+/* 超大字体 - 中老年用户 */
+.text-mega {
+  font-size: 96rpx;
+}
+
+/* 文字颜色 */
+.text-primary {
+  color: #1677ff;
+}
+
+.text-success {
+  color: #52c41a;
+}
+
+.text-warning {
+  color: #faad14;
+}
+
+.text-danger {
+  color: #ff4d4f;
+}
+
+.text-gray {
+  color: #666;
+}
+
+.text-light {
+  color: #999;
+}
+
+/* 间距 */
+.mt-xs { margin-top: 8rpx; }
+.mt-sm { margin-top: 16rpx; }
+.mt-md { margin-top: 24rpx; }
+.mt-lg { margin-top: 32rpx; }
+.mt-xl { margin-top: 48rpx; }
+
+.mb-xs { margin-bottom: 8rpx; }
+.mb-sm { margin-bottom: 16rpx; }
+.mb-md { margin-bottom: 24rpx; }
+.mb-lg { margin-bottom: 32rpx; }
+.mb-xl { margin-bottom: 48rpx; }
+
+.p-xs { padding: 8rpx; }
+.p-sm { padding: 16rpx; }
+.p-md { padding: 24rpx; }
+.p-lg { padding: 32rpx; }
+.p-xl { padding: 48rpx; }
