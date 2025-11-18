@@ -41,10 +41,12 @@
     </view>
 
     <view wx:for="{{filteredProducts}}" wx:key="id" class="product-card" bind:tap="goToDetail" data-id="{{item.id}}">
-      <image class="product-image" src="{{item.imageUrl}}" mode="aspectFill" />
-      <view class="product-tags-overlay">
-        <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" wx:if="{{index < 2}}" class="tag-overlay">
-          {{tag}}
+      <view class="product-image-container">
+        <image class="product-image" src="{{item.imageUrl}}" mode="aspectFill" />
+        <view class="product-tags-overlay">
+          <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" wx:if="{{index < 2}}" class="tag-overlay">
+            {{tag}}
+          </view>
         </view>
       </view>
 
