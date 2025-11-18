@@ -26,6 +26,33 @@ App({
 
   onLaunch() {
     // 小程序启动时执行
-    console.log('夕阳红旅游小程序启动');
+    console.log('老友行旅游小程序启动');
+    
+    // 加载用户信息
+    const userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+      this.globalData.userInfo = userInfo;
+    }
+  },
+
+  // 检查登录状态
+  checkLogin() {
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      });
+      return false;
+    }
+    return true;
+  },
+
+  // 退出登录
+  logout() {
+    wx.removeStorageSync('userInfo');
+    this.globalData.userInfo = null;
+    wx.reLaunch({
+      url: '/pages/login/login'
+    });
   }
 })

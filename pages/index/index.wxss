@@ -9,12 +9,31 @@
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
 }
 
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
 .page-title {
   font-size: 52rpx;
   font-weight: bold;
   color: #1677ff;
-  margin-bottom: 24rpx;
-  text-align: center;
+}
+
+.user-info {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-icon {
+  font-size: 48rpx;
 }
 
 .search-box {

@@ -82,6 +82,38 @@ Page({
     });
   },
 
+  showUserMenu() {
+    const app = getApp();
+    const userInfo = app.globalData.userInfo;
+    
+    const itemList = userInfo 
+      ? [`当前用户：${userInfo.name || userInfo.phone}`, '退出登录']
+      : ['去登录'];
+
+    wx.showActionSheet({
+      itemList,
+      success: (res) => {
+        if (userInfo && res.tapIndex === 1) {
+          // 退出登录
+          wx.showModal({
+            title: '确认退出',
+            content: '确定要退出登录吗？',
+            success: (modalRes) => {
+              if (modalRes.confirm) {
+                app.logout();
+              }
+            }
+          });
+        } else if (!userInfo && res.tapIndex === 0) {
+          // 去登录
+          wx.reLaunch({
+            url: '/pages/login/login'
+          });
+        }
+      }
+    });
+  },
+
   // 分享配置
   onShareAppMessage() {
     return {
