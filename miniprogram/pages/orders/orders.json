@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "我的行程",
-  "usingComponents": {
-    "customer-service": "/components/customer-service/index"
-  }
-}

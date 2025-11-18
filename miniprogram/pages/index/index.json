@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "夕阳红旅游",
-  "usingComponents": {
-    "customer-service": "/components/customer-service/index"
-  }
-}
