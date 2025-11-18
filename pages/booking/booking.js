@@ -125,7 +125,7 @@ Page({
     
     util.showSuccess('预订成功！');
     setTimeout(() => {
-      wx.switchTab({
+      wx.redirectTo({
         url: '/pages/orders/orders'
       });
     }, 1500);

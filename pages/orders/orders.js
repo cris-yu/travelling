@@ -44,6 +44,12 @@ Page({
     });
   },
 
+  goToHome() {
+    wx.reLaunch({
+      url: '/pages/index/index'
+    });
+  },
+
   onShareAppMessage() {
     return {
       title: '我的行程',

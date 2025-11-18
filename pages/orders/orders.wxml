@@ -3,7 +3,7 @@
   <view wx:if="{{orders.length === 0}}" class="empty-state">
     <text class="empty-icon">📋</text>
     <text class="empty-text">暂无行程记录</text>
-    <button class="go-home-btn" open-type="switchTab" url="/pages/index/index">
+    <button class="go-home-btn" bind:tap="goToHome">
       去看看旅游产品
     </button>
   </view>
