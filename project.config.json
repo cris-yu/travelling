@@ -1,5 +1,5 @@
 {
-  "description": "夕阳红旅游 - 中老年专属跟团游小程序",
+  "description": "老友行 - 中老年专属跟团游小程序",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -49,7 +49,7 @@
   "compileType": "miniprogram",
   "libVersion": "3.11.2",
   "appid": "wx93ba1d215fddca86",
-  "projectname": "senior-travel-miniprogram",
+  "projectname": "laoyouxing-miniprogram",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

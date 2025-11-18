@@ -2,7 +2,7 @@
 <view class="container">
   <!-- 搜索栏 -->
   <view class="search-header">
-    <view class="page-title">夕阳红旅游</view>
+    <view class="page-title">老友行</view>
     <view class="search-box">
       <input class="search-input" placeholder="搜索目的地或产品名称" value="{{searchText}}" bindinput="onSearchInput" />
     </view>
