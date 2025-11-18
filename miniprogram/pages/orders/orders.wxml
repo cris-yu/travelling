@@ -1,0 +1,85 @@
+<!-- pages/orders/orders.wxml -->
+<view class="container">
+  <view wx:if="{{orders.length === 0}}" class="empty-state">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无行程记录</text>
+    <button class="go-home-btn" open-type="switchTab" url="/pages/index/index">
+      去看看旅游产品
+    </button>
+  </view>
+
+  <view wx:else class="orders-container">
+    <view wx:for="{{orders}}" wx:key="id" wx:for-item="order" wx:for-index="idx" class="order-card">
+      <!-- 订单头部 -->
+      <view class="order-header">
+        <view class="order-title">{{order.productTitle}}</view>
+        <view class="order-status" style="color: #52c41a;">已确认</view>
+      </view>
+
+      <!-- 关键信息突出显示 -->
+      <view class="order-highlights">
+        <view class="highlight-item urgent">
+          <view class="highlight-label">集合时间</view>
+          <view class="highlight-value time">{{order.meetingTime}}</view>
+        </view>
+        
+        <view class="highlight-item urgent">
+          <view class="highlight-label">集合地点</view>
+          <view class="highlight-value location">{{order.meetingPoint}}</view>
+          <button class="action-btn map-btn" bind:tap="openNavigation" 
+                  data-latitude="{{order.latitude}}" 
+                  data-longitude="{{order.longitude}}" 
+                  data-address="{{order.meetingPoint}}">
+            📍 导航
+          </button>
+        </view>
+
+        <view class="highlight-item">
+          <view class="highlight-label">导游电话</view>
+          <view class="highlight-value phone">{{order.guidePhone}}</view>
+          <button class="action-btn call-btn" bind:tap="callGuide" data-phone="{{order.guidePhone}}">
+            📞 拨打
+          </button>
+        </view>
+
+        <view class="highlight-item">
+          <view class="highlight-label">导游姓名</view>
+          <view class="highlight-value">{{order.guideName}}</view>
+        </view>
+      </view>
+
+      <!-- 订单详情 -->
+      <view class="order-details">
+        <view class="detail-row">
+          <text class="detail-label">订单编号</text>
+          <text class="detail-value">{{order.id}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">出行日期</text>
+          <text class="detail-value">{{order.travelDate}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">预订日期</text>
+          <text class="detail-value">{{order.bookingDate}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">订单金额</text>
+          <text class="detail-value price">¥{{order.totalPrice}}</text>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="order-actions">
+        <button class="action-button outline" bind:tap="viewItinerary" data-id="{{order.id}}">
+          查看详细行程
+        </button>
+        <button class="action-button primary" bind:tap="shareItinerary" data-index="{{idx}}">
+          分享给家人
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 客服组件 -->
+  <customer-service />
+</view>

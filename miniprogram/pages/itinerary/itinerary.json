@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "详细行程",
+  "usingComponents": {
+    "customer-service": "/components/customer-service/index"
+  }
+}

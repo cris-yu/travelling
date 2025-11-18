@@ -1,0 +1,96 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-header">
+    <view class="page-title">夕阳红旅游</view>
+    <view class="search-box">
+      <input class="search-input" placeholder="搜索目的地或产品名称" value="{{searchText}}" bindinput="onSearchInput" />
+    </view>
+  </view>
+
+  <!-- 筛选区域 -->
+  <view class="filter-section">
+    <view class="filter-group">
+      <view class="filter-label">目的地：</view>
+      <view class="filter-tags">
+        <view wx:for="{{locations}}" wx:key="*this" 
+              class="tag {{selectedLocation === item ? 'tag-active' : ''}}"
+              bind:tap="selectLocation" data-location="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="filter-group">
+      <view class="filter-label">体力强度：</view>
+      <view class="filter-tags">
+        <view wx:for="{{intensityLevels}}" wx:key="*this"
+              class="tag {{selectedIntensity === item ? 'tag-active' : ''}}"
+              bind:tap="selectIntensity" data-intensity="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 产品列表 -->
+  <view class="products-container">
+    <view wx:if="{{filteredProducts.length === 0}}" class="empty-state">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">暂无符合条件的产品</text>
+    </view>
+
+    <view wx:for="{{filteredProducts}}" wx:key="id" class="product-card" bind:tap="goToDetail" data-id="{{item.id}}">
+      <image class="product-image" src="{{item.imageUrl}}" mode="aspectFill" />
+      <view class="product-tags-overlay">
+        <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" wx:if="{{index < 2}}" class="tag-overlay">
+          {{tag}}
+        </view>
+      </view>
+
+      <view class="product-info">
+        <view class="product-title">{{item.title}}</view>
+        <view class="product-desc">{{item.description}}</view>
+
+        <view class="product-meta">
+          <view class="meta-item">
+            <text class="meta-icon">📍</text>
+            <text class="meta-text">{{item.location}}</text>
+          </view>
+          <view class="meta-item">
+            <text class="meta-icon">⏱️</text>
+            <text class="meta-text">{{item.duration}}</text>
+          </view>
+          <view class="meta-item">
+            <text class="meta-icon">👥</text>
+            <text class="meta-text">{{item.groupSize}}</text>
+          </view>
+        </view>
+
+        <view class="product-features">
+          <view class="intensity-badge" style="background-color: {{item.intensityColor}};">
+            {{item.intensity}}
+          </view>
+          <view class="age-badge">
+            适合 {{item.ageRange}}
+          </view>
+          <view wx:if="{{item.medicalSupport.hasDoctor}}" class="medical-badge">
+            ⚕️ 医护随行
+          </view>
+        </view>
+
+        <view class="product-footer">
+          <view class="price-section">
+            <text class="price-label">起</text>
+            <text class="price">¥{{item.price}}</text>
+            <text class="price-unit">/人</text>
+          </view>
+          <view class="view-btn">查看详情</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 客服组件 -->
+  <customer-service />
+</view>

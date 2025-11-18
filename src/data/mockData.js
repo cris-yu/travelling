@@ -1,5 +1,5 @@
 // 模拟旅游产品数据
-const mockProducts = [
+export const mockProducts = [
   {
     id: 1,
     title: '北京故宫一日游',
@@ -7,7 +7,7 @@ const mockProducts = [
     price: 299,
     ageRange: '50-70岁',
     intensity: '轻松',
-    imageUrl: 'https://via.placeholder.com/400x300/FF6B6B/FFFFFF?text=%E5%8C%97%E4%BA%AC%E6%95%85%E5%AE%AB',
+    imageUrl: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800',
     description: '探访中华文化瑰宝，感受皇家气派',
     duration: '1天',
     groupSize: '20-30人',
@@ -48,7 +48,7 @@ const mockProducts = [
     price: 199,
     ageRange: '50-70岁',
     intensity: '轻松',
-    imageUrl: 'https://via.placeholder.com/400x300/4ECDC4/FFFFFF?text=%E5%A4%A9%E6%B4%A5%E5%8F%A4%E6%96%87%E5%8C%96%E8%A1%97',
+    imageUrl: 'https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=800',
     description: '品味津门文化，体验民俗风情',
     duration: '1天',
     groupSize: '20-30人',
@@ -89,7 +89,7 @@ const mockProducts = [
     price: 599,
     ageRange: '50-70岁',
     intensity: '适中',
-    imageUrl: 'https://via.placeholder.com/400x300/95E1D3/FFFFFF?text=%E6%89%BF%E5%BE%B7%E9%81%BF%E6%9A%91%E5%B1%B1%E5%BA%84',
+    imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     description: '皇家园林避暑胜地，山水之间放松身心',
     duration: '2天1夜',
     groupSize: '20-30人',
@@ -131,7 +131,7 @@ const mockProducts = [
     price: 899,
     ageRange: '50-70岁',
     intensity: '轻松',
-    imageUrl: 'https://via.placeholder.com/400x300/F38181/FFFFFF?text=%E5%8C%97%E6%88%B4%E6%B2%B3',
+    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
     description: '海滨度假胜地，享受慢节奏海边生活',
     duration: '3天2夜',
     groupSize: '20-30人',
@@ -169,6 +169,22 @@ const mockProducts = [
   }
 ];
 
-module.exports = {
-  mockProducts
-};
+// 模拟订单数据
+export const mockOrders = [
+  {
+    id: 'ORDER001',
+    productId: 1,
+    productTitle: '北京故宫一日游',
+    status: 'confirmed',
+    bookingDate: '2024-11-15',
+    travelDate: '2024-11-25',
+    travelers: [
+      { name: '张大明', idCard: '110***********1234', phone: '138****5678', relation: '父亲' }
+    ],
+    totalPrice: 299,
+    meetingTime: '08:00',
+    meetingPoint: '北京市东城区王府井大街100号',
+    guidePhone: '138-0000-1234',
+    guideName: '李导游'
+  }
+];
