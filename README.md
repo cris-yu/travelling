@@ -23,6 +23,7 @@
 
 ## 技术栈
 
+### 前端（小程序）
 - **框架**：微信小程序原生开发
 - **语言**：JavaScript, WXML, WXSS
 - **API**：微信小程序官方API
@@ -31,6 +32,16 @@
   - `wx.navigateTo()` - 页面跳转
   - `wx.setClipboardData()` - 复制信息
   - `wx.showToast()` / `wx.showModal()` - 提示框
+
+### 后端
+- **框架**：Node.js + Express
+- **数据库**：MongoDB
+- **ODM**：Mongoose
+- **特性**：
+  - RESTful API设计
+  - JWT认证（可选）
+  - CORS跨域支持
+  - 错误处理中间件
 
 ## 项目结构
 
@@ -58,8 +69,10 @@ travelling/
 ### 环境要求
 - 微信开发者工具（最新版本）
 - 微信小程序账号（可使用测试号）
+- Node.js >= 14.x
+- MongoDB >= 4.x
 
-### 安装步骤
+### 小程序前端安装
 
 1. **克隆项目**
 ```bash
@@ -77,6 +90,64 @@ cd travelling
 3. **运行项目**
    - 导入成功后，项目会自动编译运行
    - 在模拟器中即可查看效果
+
+### 后端安装与启动
+
+1. **安装MongoDB**
+
+```bash
+# macOS使用Homebrew
+brew tap mongodb/brew
+brew install mongodb-community
+brew services start mongodb-community
+
+# 或者手动启动
+mongod --dbpath /path/to/data/db
+```
+
+2. **安装后端依赖**
+
+```bash
+cd backend
+npm install
+```
+
+3. **配置环境变量**
+
+```bash
+# 复制示例文件
+cp .env.example .env
+
+# 编辑.env文件，修改数据库连接等配置
+```
+
+4. **初始化数据库**
+
+```bash
+npm run seed
+```
+
+5. **启动后端服务**
+
+```bash
+# 开发模式（热重载）
+npm run dev
+
+# 生产模式
+npm start
+```
+
+服务器将运行在 `http://localhost:3000`
+
+6. **测试API**
+
+```bash
+# 健康检查
+curl http://localhost:3000/health
+
+# 获取产品列表
+curl http://localhost:3000/api/products
+```
 
 ## 主要页面说明
 
