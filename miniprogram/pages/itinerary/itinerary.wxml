@@ -1,0 +1,109 @@
+<!-- pages/itinerary/itinerary.wxml -->
+<view class="container" wx:if="{{order && product}}">
+  <!-- 当日关键信息 -->
+  <view class="today-info-card">
+    <view class="today-badge">当日行程</view>
+    <view class="today-title">{{order.productTitle}}</view>
+    
+    <!-- 集合时间 - 超大字体 -->
+    <view class="key-info time-info">
+      <view class="info-icon">⏰</view>
+      <view class="info-content">
+        <view class="info-label">集合时间</view>
+        <view class="info-value mega">{{order.meetingTime}}</view>
+      </view>
+    </view>
+
+    <!-- 集合地点 - 带地图导航 -->
+    <view class="key-info location-info">
+      <view class="info-icon">📍</view>
+      <view class="info-content">
+        <view class="info-label">集合地点</view>
+        <view class="info-value large">{{order.meetingPoint}}</view>
+      </view>
+      <button class="navigate-btn" bind:tap="openNavigation">
+        🧭 一键导航
+      </button>
+    </view>
+
+    <!-- 导游联系方式 - 一键拨打 -->
+    <view class="key-info guide-info">
+      <view class="info-icon">👨‍🏫</view>
+      <view class="info-content">
+        <view class="info-label">导游信息</view>
+        <view class="info-value medium">
+          {{order.guideName}} {{order.guidePhone}}
+        </view>
+      </view>
+      <button class="call-btn" bind:tap="callGuide">
+        📞 一键拨打
+      </button>
+    </view>
+  </view>
+
+  <!-- 详细行程时间轴 -->
+  <view class="itinerary-section">
+    <view class="section-title">📅 详细行程安排</view>
+    <view class="itinerary-timeline">
+      <view wx:for="{{product.itinerary}}" wx:key="time" class="timeline-item">
+        <view class="timeline-time-wrapper">
+          <view class="timeline-time">{{item.time}}</view>
+        </view>
+        <view class="timeline-marker">
+          <view class="timeline-dot"></view>
+          <view wx:if="{{index < product.itinerary.length - 1}}" class="timeline-line"></view>
+        </view>
+        <view class="timeline-content">
+          <view class="timeline-location">{{item.location}}</view>
+          <view class="timeline-activity">{{item.activity}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 温馨提示 -->
+  <view class="tips-section">
+    <view class="section-title">💡 温馨提示</view>
+    <view class="tips-list">
+      <view class="tip-item">
+        <text class="tip-bullet">•</text>
+        <text class="tip-text">请提前10分钟到达集合地点</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-bullet">•</text>
+        <text class="tip-text">请携带身份证等有效证件</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-bullet">•</text>
+        <text class="tip-text">如有身体不适请及时告知导游</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-bullet">•</text>
+        <text class="tip-text">请保管好随身贵重物品</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-bullet">•</text>
+        <text class="tip-text">请跟随导游，不要单独行动</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 紧急联系 -->
+  <view class="emergency-section">
+    <view class="section-title">🚨 紧急联系</view>
+    <view class="emergency-contacts">
+      <button class="emergency-btn danger" bind:tap="callEmergency" data-phone="110">
+        报警电话：110
+      </button>
+      <button class="emergency-btn danger" bind:tap="callEmergency" data-phone="120">
+        急救电话：120
+      </button>
+      <button class="emergency-btn primary" bind:tap="callEmergency" data-phone="400-8888-8888">
+        24小时客服：400-8888-8888
+      </button>
+    </view>
+  </view>
+
+  <!-- 客服组件 -->
+  <customer-service />
+</view>
