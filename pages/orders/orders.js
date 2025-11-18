@@ -26,6 +26,20 @@ Page({
     util.makePhoneCall(phone);
   },
 
+  callEmergency(e) {
+    const phone = e.currentTarget.dataset.phone;
+    wx.showModal({
+      title: '紧急联系',
+      content: `确认拨打紧急联系人 ${phone} ？`,
+      confirmText: '拨打',
+      success: (res) => {
+        if (res.confirm) {
+          util.makePhoneCall(phone);
+        }
+      }
+    });
+  },
+
   openNavigation(e) {
     const { latitude, longitude, address } = e.currentTarget.dataset;
     util.openMap(latitude, longitude, address);

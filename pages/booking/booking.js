@@ -8,7 +8,10 @@ Page({
     travelDate: '',
     travelers: [{ name: '', idCard: '', phone: '', relation: '' }],
     contactName: '',
-    contactPhone: ''
+    contactPhone: '',
+    contactRelation: '',
+    emergencyName: '',
+    emergencyPhone: ''
   },
 
   onLoad(options) {
@@ -56,8 +59,34 @@ Page({
     this.setData({ contactPhone: e.detail.value });
   },
 
+  onContactRelationInput(e) {
+    this.setData({ contactRelation: e.detail.value });
+  },
+
+  onEmergencyNameInput(e) {
+    this.setData({ emergencyName: e.detail.value });
+  },
+
+  onEmergencyPhoneInput(e) {
+    this.setData({ emergencyPhone: e.detail.value });
+  },
+
+  // 使用联系人信息填充紧急联系人
+  useContactAsEmergency() {
+    const { contactName, contactPhone } = this.data;
+    if (!contactName || !contactPhone) {
+      util.showError('请先填写联系人信息');
+      return;
+    }
+    this.setData({
+      emergencyName: contactName,
+      emergencyPhone: contactPhone
+    });
+    util.showSuccess('已自动填充');
+  },
+
   submitOrder() {
-    const { product, travelDate, travelers, contactName, contactPhone } = this.data;
+    const { product, travelDate, travelers, contactName, contactPhone, emergencyName, emergencyPhone } = this.data;
 
     // 验证
     if (!travelDate) {
@@ -102,6 +131,16 @@ Page({
       return;
     }
 
+    if (!emergencyName || !emergencyPhone) {
+      util.showError('请填写紧急联系人信息');
+      return;
+    }
+
+    if (!util.validatePhone(emergencyPhone)) {
+      util.showError('紧急联系电话格式不正确');
+      return;
+    }
+
     // 生成订单
     const app = getApp();
     const order = {
@@ -112,6 +151,12 @@ Page({
       bookingDate: new Date().toISOString().split('T')[0],
       travelDate,
       travelers,
+      contactName,
+      contactPhone,
+      emergencyContact: {
+        name: emergencyName,
+        phone: emergencyPhone
+      },
       totalPrice: product.price * travelers.length,
       meetingTime: product.itinerary[0].time,
       meetingPoint: product.meetingPoint.address,
@@ -123,11 +168,19 @@ Page({
 
     app.globalData.orders.unshift(order);
     
-    util.showSuccess('预订成功！');
-    setTimeout(() => {
-      wx.redirectTo({
-        url: '/pages/orders/orders'
-      });
-    }, 1500);
+    // 显示成功提示，并提示可分享给家人
+    wx.showModal({
+      title: '🎉 预订成功！',
+      content: '订单已生成，您可以分享行程给家人查看',
+      confirmText: '查看订单',
+      cancelText: '稍后',
+      success: (res) => {
+        if (res.confirm) {
+          wx.redirectTo({
+            url: '/pages/orders/orders'
+          });
+        }
+      }
+    });
   }
 })

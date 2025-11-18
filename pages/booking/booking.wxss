@@ -204,3 +204,32 @@
 .submit-btn::after {
   border: none;
 }
+
+/* 紧急联系人区域特殊样式 */
+.emergency-section {
+  background: #fff7e6;
+  border: 2rpx solid #ffa940;
+  border-radius: 16rpx;
+}
+
+.emergency-section .section-title {
+  color: #d46b08;
+}
+
+.quick-fill {
+  padding: 24rpx 0 0 0;
+}
+
+.quick-fill-btn {
+  width: 100%;
+  height: 88rpx;
+  background: white;
+  border: 2rpx dashed #1677ff;
+  color: #1677ff;
+  font-size: 32rpx;
+  border-radius: 12rpx;
+}
+
+.quick-fill-btn::after {
+  border: none;
+}

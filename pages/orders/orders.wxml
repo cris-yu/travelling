@@ -48,6 +48,25 @@
         </view>
       </view>
 
+      <!-- 紧急联系人信息 -->
+      <view wx:if="{{order.emergencyContact}}" class="emergency-contact-section">
+        <view class="emergency-title">🚨 紧急联系人</view>
+        <view class="emergency-info">
+          <view class="emergency-row">
+            <text class="emergency-label">姓名：</text>
+            <text class="emergency-value">{{order.emergencyContact.name}}</text>
+          </view>
+          <view class="emergency-row">
+            <text class="emergency-label">电话：</text>
+            <text class="emergency-value phone">{{order.emergencyContact.phone}}</text>
+            <button class="emergency-call-btn" bind:tap="callEmergency" 
+                    data-phone="{{order.emergencyContact.phone}}">
+              📞 一键拨打
+            </button>
+          </view>
+        </view>
+      </view>
+
       <!-- 订单详情 -->
       <view class="order-details">
         <view class="detail-row">

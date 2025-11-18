@@ -65,23 +65,55 @@
     </button>
   </view>
 
-  <!-- 联系人信息 -->
+  <!-- 联系人信息（子女/家属） -->
   <view class="form-section">
-    <view class="section-title">📞 联系人信息</view>
+    <view class="section-title">📞 联系人信息（订单接收人）</view>
     <view class="section-subtitle">
-      💡 用于接收订单确认和行程通知
+      💡 填写子女或家属信息，用于接收订单确认和行程通知
     </view>
 
     <view class="form-field">
       <view class="field-label">联系人姓名 *</view>
-      <input class="field-input" placeholder="请输入联系人姓名" value="{{contactName}}" 
+      <input class="field-input" placeholder="如：子女姓名" value="{{contactName}}" 
              bindinput="onContactNameInput" />
     </view>
 
     <view class="form-field">
       <view class="field-label">联系电话 *</view>
-      <input class="field-input" type="number" placeholder="请输入联系电话" value="{{contactPhone}}" 
+      <input class="field-input" type="number" placeholder="用于接收订单和紧急联系" value="{{contactPhone}}" 
              bindinput="onContactPhoneInput" />
+    </view>
+
+    <view class="form-field">
+      <view class="field-label">与出行人关系</view>
+      <input class="field-input" placeholder="如：子女、亲友等" value="{{contactRelation}}" 
+             bindinput="onContactRelationInput" />
+    </view>
+  </view>
+
+  <!-- 紧急联系人 -->
+  <view class="form-section emergency-section">
+    <view class="section-title">🚨 紧急联系人</view>
+    <view class="section-subtitle">
+      💡 旅行期间如遇紧急情况，导游会联系此人
+    </view>
+
+    <view class="form-field">
+      <view class="field-label">紧急联系人姓名 *</view>
+      <input class="field-input" placeholder="如：家属姓名" value="{{emergencyName}}" 
+             bindinput="onEmergencyNameInput" />
+    </view>
+
+    <view class="form-field">
+      <view class="field-label">紧急联系电话 *</view>
+      <input class="field-input" type="number" placeholder="请保持畅通" value="{{emergencyPhone}}" 
+             bindinput="onEmergencyPhoneInput" />
+    </view>
+
+    <view class="quick-fill">
+      <button class="quick-fill-btn" bind:tap="useContactAsEmergency">
+        📋 同联系人信息
+      </button>
     </view>
   </view>
 
